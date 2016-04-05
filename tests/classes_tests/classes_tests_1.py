@@ -4,4 +4,6 @@ import game_board, piece, position, track
 
 tab = game_board.Board()
 print(tab)
-print(tab[0][0])
+print(tab[6][1])
+print(tab[6][1].localization)
+print(tab[6][1].get_near(tab))

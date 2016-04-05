@@ -13,9 +13,9 @@ class Board(object):
         for item in range(0, 8):
             for i in range(0, 8):
                 if (item + i) % 2 == 0:
-                    self.board[item][i] = Position((item + 1, i + 1), "white")
+                    self.board[item][i] = Position((item, i), "white")
                 else:
-                    self.board[item][i] = Position((item + 1, i + 1), "black")
+                    self.board[item][i] = Position((item, i), "black")
 
     def __getitem__(self, index):
         return self.board[index]

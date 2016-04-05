@@ -5,45 +5,58 @@ class Position(object):
         self.localization = (localization[0], localization[1])
         self.color = color
 
-        def get_near(self):
-            self.set_near()
-            return self.near
+    def get_near(self, tab):
+        self.set_near(tab)
+        string = ""
+        for pos in self.near:
+            string += str(pos) + "\n"
+        return string
 
-        def set_near(self):
+    def set_near(self, tab):
 
-            base = [
-                (self.localization[0] - 1, self.localization[1] - 1),
-                (self.localization[0] - 1, self.localization[1] + 1),
-                (self.localization[0] + 1, self.localization[1] - 1),
-                (self.localization[0] + 1, self.localization[1] + 1)
-            ]
+        base = [
+            (self.localization[0] - 1, self.localization[1] - 1),
+            (self.localization[0] - 1, self.localization[1] + 1),
+            (self.localization[0] + 1, self.localization[1] - 1),
+            (self.localization[0] + 1, self.localization[1] + 1)
+        ]
 
-            if (self.localization[0] == 8):
-                self.near = [base[0], base[1]]
+        if (self.localization[0] == 0 and self.localization[1] == 0):
+            self.near = [tab[base[3][0]][base[3][1]]]
+            return 0
 
-            elif (self.localization[0] == 1):
-                self.near = [base[2], base[3]]
+        if (self.localization[0] == 7 and self.localization[1] == 0):
+            self.near = [tab[base[1][0]][base[1][1]]]
+            return 0
 
-            elif (self.localization[1] == 8):
-                self.near = [base[0], base[2]]
+        if (self.localization[0] == 0 and self.localization[1] == 7):
+            self.near = [tab[base[2][0]][base[2][1]]]
+            return 0
 
-            elif (self.localization == 1):
-                self.near = [base[3], base[1]]
+        if (self.localization[0] == 7 and self.localization[1] == 7):
+            self.near = [tab[base[0][0]][base[0][1]]]
+            return 0
 
-            elif (self.localization[0] == 1 and self.localization[1] == 1):
-                self.near = [base[3]]
+        if (self.localization[0] == 7):
+            self.near = [tab[base[0][0]][base[0][1]], tab[base[1][0]][base[1][1]]]
+            return 0
 
-            elif (self.localization[0] == 8 and self.localization[1] == 1):
-                self.near = [base[1]]
+        if (self.localization[0] == 0):
+            self.near = [tab[base[2][0]][base[2][1]], tab[base[3][0]][base[3][1]]]
+            return 0
 
-            elif (self.localization[0] == 1 and self.localization[1] == 8):
-                self.near = [base[2]]
+        if (self.localization[1] == 0):
+            self.near = [tab[base[0][0]][base[0][1]], tab[base[2][0]][base[2][1]]]
+            return 0
 
-            elif (self.localization[0] == 8 and self.localization[1] == 8):
-                self.near = [base[0]]
+        if (self.localization == 7):
+            self.near = [tab[base[3][0]][base[3][1]], tab[base[1][0]][base[1][1]]]
+            return 0
 
-            else:
-                self.near = [base[0], base[1], base[2], base[3]]
+
+
+        self.near = [tab[base[0][0]][base[0][1]], tab[base[1][0]][base[1][1]], tab[base[2][0]][base[2][1]], tab[base[3][0]][base[3][1]]]
+        return 0
 
     def is_occupied(self):
         if (self.occupation):
