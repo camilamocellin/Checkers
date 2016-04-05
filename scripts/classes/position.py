@@ -1,10 +1,12 @@
 class Position(object):
 
-    def __init__(self, localization):
+    def __init__(self, localization, color):
         self.occupation = []
         self.localization = (localization[0], localization[1])
+        self.color = color
 
         def get_near(self):
+            self.set_near()
             return self.near
 
         def set_near(self):
@@ -53,3 +55,6 @@ class Position(object):
 
     def delete_piece(self):
         self.piece = []
+
+    def __str__(self):
+        return "Line: %d | Column: %d | Ocupation: %s | Color: %s" % (self.localization[0], self.localization[1], self.occupation, self.color)

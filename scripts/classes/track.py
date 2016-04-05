@@ -6,8 +6,8 @@ class Track(object):
         self.track_list = []
 
     def set_track_list(self):
-        if start[0] < destiny[0]:
-            if start[1] < destiny[1]:
+        if self.start[0] < self.destiny[0]:
+            if self.start[1] < self.destiny[1]:
                 x_step = 1
                 y_step = 1
             else:
@@ -23,3 +23,4 @@ class Track(object):
         for x in range(start[0], destiny[0] + 1, x_step):
             for y in range(start[1], destiny[1] + 1, y_step):
                 self.track_list.append(x,y)
+
