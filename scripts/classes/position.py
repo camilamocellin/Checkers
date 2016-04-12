@@ -58,6 +58,15 @@ class Position(object):
         self.near = [tab[base[0][0]][base[0][1]], tab[base[1][0]][base[1][1]], tab[base[2][0]][base[2][1]], tab[base[3][0]][base[3][1]]]
         return 0
 
+    def get_draw(self):
+        if not self.is_occupied():
+            if self.color == "white":
+                return "[ ]"
+            else:
+               return "[|]"
+        if self.is_occupied():
+            return "[O]"
+
     def is_occupied(self):
         if (self.occupation):
             return True

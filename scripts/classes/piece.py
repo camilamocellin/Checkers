@@ -7,3 +7,6 @@ class Piece(object):
 
     def move(self, destiny):
         track = Track(self.position, destiny)
+
+    def __str__(self):
+        return "Piece : %s " % self.player

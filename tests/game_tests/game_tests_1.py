@@ -1,18 +1,19 @@
 import sys
 sys.path.insert(1,'/home/luiz/Projects/Checkers/scripts/classes')
-import game_board, piece, position, track
+sys.path.insert(1,'/home/luiz/Projects/Checkers/scripts/game')
+import game_board, piece, position, track, start
 
 tab = game_board.Board()
-print(tab)
-print(tab[1][1])
-print (tab[2][1])
+
 
 def draw_tab(tab):
     string = ""
     for line in tab:
-        for column in tab[0]:
+        for column in line:
             string += column.get_draw() + " "
         string += "\n"
     return string
+
+start.set_pieces(tab)
 
 print (draw_tab(tab))
