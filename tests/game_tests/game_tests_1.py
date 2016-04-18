@@ -17,3 +17,9 @@ def draw_tab(tab):
 start.set_pieces(tab)
 
 print (draw_tab(tab))
+player1 = tab[0][1].occupation.player
+player2 = tab[7][0].occupation.player
+
+player1.pieces[0].move(tab[0][3])
+
+

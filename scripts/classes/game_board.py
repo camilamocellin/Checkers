@@ -20,6 +20,7 @@ class Board(object):
     def __getitem__(self, index):
         return self.board[index]
 
+
     def __str__(self):
         string = ""
         for line in range(0,8):
